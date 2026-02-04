@@ -1,0 +1,133 @@
+{
+  "prompts": [
+    {
+      "id": "1",
+      "title": "Introdução de Artigo",
+      "content": "Você é um redator profissional. Escreva uma introdução envolvente para um artigo sobre [[TEMA]] destinado a [[PUBLICO]]. O tom deve ser [[TOM]] e a introdução deve ter aproximadamente [[PALAVRAS]] palavras.",
+      "color": "yellow",
+      "tags": ["ARTIGO", "REDACAO"],
+      "createdAt": "2026-02-01T10:00:00.000Z",
+      "updatedAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "title": "Análise de Código",
+      "content": "Analise o seguinte código e identifique possíveis melhorias de performance, segurança e boas práticas. Forneça sugestões específicas com exemplos de código corrigido.",
+      "color": "blue",
+      "tags": ["CODIGO", "DESENVOLVIMENTO"],
+      "createdAt": "2026-02-01T10:00:00.000Z",
+      "updatedAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "title": "E-mail Profissional",
+      "content": "Redija um e-mail profissional para [[DESTINATARIO]] da empresa [[EMPRESA]]. O assunto é: [[ASSUNTO]]. O tom deve ser cordial mas profissional. Inclua uma saudação apropriada e encerramento formal.",
+      "color": "green",
+      "tags": ["EMAIL", "COMUNICACAO"],
+      "createdAt": "2026-02-01T10:00:00.000Z",
+      "updatedAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "title": "Contexto de Usuário",
+      "content": "O usuário se chama [[USUARIO]] e trabalha na empresa [[EMPRESA]]. Sua função é [[FUNCAO]] e ele tem experiência de [[ANOS]] anos na área.",
+      "color": "purple",
+      "tags": ["CONTEXTO", "PERSONALIZACAO"],
+      "createdAt": "2026-02-01T10:00:00.000Z",
+      "updatedAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "title": "Resumo Executivo",
+      "content": "Crie um resumo executivo conciso do seguinte conteúdo, destacando os pontos principais, métricas relevantes e recomendações de ação. O resumo deve ter no máximo [[PARAGRAFOS]] parágrafos.",
+      "color": "orange",
+      "tags": ["RESUMO", "EXECUTIVO"],
+      "createdAt": "2026-02-01T10:00:00.000Z",
+      "updatedAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "title": "Tradução Contextual",
+      "content": "Traduza o texto a seguir de [[IDIOMA_ORIGEM]] para [[IDIOMA_DESTINO]], mantendo o contexto cultural, expressões idiomáticas e o tom original do texto.",
+      "color": "pink",
+      "tags": ["TRADUCAO", "IDIOMAS"],
+      "createdAt": "2026-02-01T10:00:00.000Z",
+      "updatedAt": "2026-02-01T10:00:00.000Z"
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag-1",
+      "name": "ARTIGO",
+      "color": "yellow",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-2",
+      "name": "REDACAO",
+      "color": "yellow",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-3",
+      "name": "CODIGO",
+      "color": "blue",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-4",
+      "name": "DESENVOLVIMENTO",
+      "color": "blue",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-5",
+      "name": "EMAIL",
+      "color": "green",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-6",
+      "name": "COMUNICACAO",
+      "color": "green",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-7",
+      "name": "CONTEXTO",
+      "color": "purple",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-8",
+      "name": "PERSONALIZACAO",
+      "color": "purple",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-9",
+      "name": "RESUMO",
+      "color": "orange",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-10",
+      "name": "EXECUTIVO",
+      "color": "orange",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-11",
+      "name": "TRADUCAO",
+      "color": "pink",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tag-12",
+      "name": "IDIOMAS",
+      "color": "pink",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    }
+  ],
+  "compositions": []
+}
