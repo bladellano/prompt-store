@@ -117,24 +117,54 @@ async function importData(event) {
     const text = await file.text()
     const data = JSON.parse(text)
     
-    if (confirm('Isso irá substituir todos os dados atuais. Continuar?')) {
-      // TODO: Implementar importação via API
-      alert('Importação realizada com sucesso!')
+    // Validar estrutura básica
+    if (!data.prompts && !data.tags && !data.compositions) {
+      throw new Error('Arquivo inválido: não contém prompts, tags ou compositions')
+    }
+    
+    if (confirm(`Importar dados do arquivo?\n\nIsso irá substituir:\n- ${data.prompts?.length || 0} prompts\n- ${data.tags?.length || 0} tags\n- ${data.compositions?.length || 0} composições\n\nContinuar?`)) {
+      const response = await fetch('/api/import', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      
+      if (!response.ok) {
+        throw new Error('Erro na resposta do servidor')
+      }
+      
+      const result = await response.json()
+      alert(`Importação realizada com sucesso!\n\nImportados:\n- ${result.counts.prompts} prompts\n- ${result.counts.tags} tags\n- ${result.counts.compositions} composições`)
+      
+      // Recarregar a página para atualizar os dados
       window.location.reload()
     }
   } catch (e) {
-    alert('Erro ao importar arquivo. Verifique se é um JSON válido.')
+    console.error('Erro ao importar:', e)
+    alert('Erro ao importar arquivo: ' + e.message)
   }
   
   event.target.value = ''
 }
 
-function clearAllData() {
+async function clearAllData() {
   if (confirm('Tem certeza? Todos os prompts, tags e composições serão excluídos permanentemente.')) {
     if (confirm('Esta ação NÃO pode ser desfeita. Deseja realmente continuar?')) {
-      // TODO: Implementar limpeza via API
-      alert('Dados limpos com sucesso!')
-      window.location.reload()
+      try {
+        const response = await fetch('/api/clear', {
+          method: 'DELETE'
+        })
+        
+        if (!response.ok) {
+          throw new Error('Erro na resposta do servidor')
+        }
+        
+        alert('Dados limpos com sucesso!')
+        window.location.reload()
+      } catch (e) {
+        console.error('Erro ao limpar dados:', e)
+        alert('Erro ao limpar dados: ' + e.message)
+      }
     }
   }
 }

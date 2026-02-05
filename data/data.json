@@ -2,57 +2,341 @@
   "prompts": [
     {
       "id": "1",
-      "title": "Introdução de Artigo",
+      "title": "Introdução de artigo",
       "content": "Você é um redator profissional. Escreva uma introdução envolvente para um artigo sobre [[TEMA]] destinado a [[PUBLICO]]. O tom deve ser [[TOM]] e a introdução deve ter aproximadamente [[PALAVRAS]] palavras.",
       "color": "yellow",
-      "tags": ["ARTIGO", "REDACAO"],
+      "tags": [
+        "ARTIGO",
+        "REDACAO"
+      ],
       "createdAt": "2026-02-01T10:00:00.000Z",
-      "updatedAt": "2026-02-01T10:00:00.000Z"
+      "updatedAt": "2026-02-04T12:21:34.179Z"
     },
     {
       "id": "2",
-      "title": "Análise de Código",
+      "title": "Análise de código",
       "content": "Analise o seguinte código e identifique possíveis melhorias de performance, segurança e boas práticas. Forneça sugestões específicas com exemplos de código corrigido.",
       "color": "blue",
-      "tags": ["CODIGO", "DESENVOLVIMENTO"],
+      "tags": [
+        "CODIGO",
+        "DESENVOLVIMENTO"
+      ],
       "createdAt": "2026-02-01T10:00:00.000Z",
-      "updatedAt": "2026-02-01T10:00:00.000Z"
+      "updatedAt": "2026-02-04T12:21:46.745Z"
     },
     {
       "id": "3",
-      "title": "E-mail Profissional",
+      "title": "E-mail profissional",
       "content": "Redija um e-mail profissional para [[DESTINATARIO]] da empresa [[EMPRESA]]. O assunto é: [[ASSUNTO]]. O tom deve ser cordial mas profissional. Inclua uma saudação apropriada e encerramento formal.",
       "color": "green",
-      "tags": ["EMAIL", "COMUNICACAO"],
+      "tags": [
+        "EMAIL",
+        "COMUNICACAO"
+      ],
       "createdAt": "2026-02-01T10:00:00.000Z",
-      "updatedAt": "2026-02-01T10:00:00.000Z"
+      "updatedAt": "2026-02-04T12:30:57.871Z"
     },
     {
       "id": "4",
-      "title": "Contexto de Usuário",
+      "title": "Contexto de usuário",
       "content": "O usuário se chama [[USUARIO]] e trabalha na empresa [[EMPRESA]]. Sua função é [[FUNCAO]] e ele tem experiência de [[ANOS]] anos na área.",
       "color": "purple",
-      "tags": ["CONTEXTO", "PERSONALIZACAO"],
+      "tags": [
+        "CONTEXTO",
+        "PERSONALIZACAO"
+      ],
       "createdAt": "2026-02-01T10:00:00.000Z",
-      "updatedAt": "2026-02-01T10:00:00.000Z"
+      "updatedAt": "2026-02-04T12:31:25.703Z"
     },
     {
       "id": "5",
-      "title": "Resumo Executivo",
+      "title": "Resumo executivo",
       "content": "Crie um resumo executivo conciso do seguinte conteúdo, destacando os pontos principais, métricas relevantes e recomendações de ação. O resumo deve ter no máximo [[PARAGRAFOS]] parágrafos.",
       "color": "orange",
-      "tags": ["RESUMO", "EXECUTIVO"],
+      "tags": [
+        "RESUMO",
+        "EXECUTIVO"
+      ],
       "createdAt": "2026-02-01T10:00:00.000Z",
-      "updatedAt": "2026-02-01T10:00:00.000Z"
+      "updatedAt": "2026-02-04T12:30:40.800Z"
     },
     {
       "id": "6",
-      "title": "Tradução Contextual",
+      "title": "Tradução contextual",
       "content": "Traduza o texto a seguir de [[IDIOMA_ORIGEM]] para [[IDIOMA_DESTINO]], mantendo o contexto cultural, expressões idiomáticas e o tom original do texto.",
       "color": "pink",
-      "tags": ["TRADUCAO", "IDIOMAS"],
+      "tags": [
+        "TRADUCAO",
+        "IDIOMAS"
+      ],
       "createdAt": "2026-02-01T10:00:00.000Z",
-      "updatedAt": "2026-02-01T10:00:00.000Z"
+      "updatedAt": "2026-02-04T12:31:09.551Z"
+    },
+    {
+      "id": "eddd8ce2-9279-4663-b6e3-17a44c5224e1",
+      "title": "Criar cards a partir de um título",
+      "content": "Por favor, analise o título “[[TITLE]]\" do documento para obter os detalhes da implementação e crie um card de tarefa seguindo a estrutura abaixo:\n\n### Template para o Card de Tarefa:\n\n## Breve descrição:** (Texto corrido, um parágrafo simples que transmita a ideia de forma clara)  \n---  \n## Critérios de aceitação:\n---  \n## Descrição técnica:  \n---  \n## Como testar?\n---  \n\nObservações: \n- Ao final de cada tópico, adicione uma quebra de linha seguida de \"---\". \n- Todos os tópicos devem ser concisos, contendo de 4 a 6 itens essenciais para o titulo.\n- Após a criação do card, compile as informações em um arquivo Markdown e nomeie-o como \"CARD_{YYYY-MM-DD-HM}.md\". ",
+      "color": "purple",
+      "tags": [
+        "DESENVOLVIMENTO"
+      ],
+      "createdAt": "2026-02-04T11:27:01.195Z",
+      "updatedAt": "2026-02-04T11:32:03.041Z"
+    },
+    {
+      "id": "3b4a0430-6f2b-4a56-9fa0-8ae058ef9abf",
+      "title": "Reduzir códigos implementados por I.A",
+      "content": "Agora que tudo está funcionando corretamente, preciso que, de alguma forma, você reduza/simplifique os códigos implementados para facilitar a manutenção futura. Além disso, gostaria que você me informasse o que eu deixei de considerar nesta implementação.",
+      "color": "yellow",
+      "tags": [
+        "RESUMO"
+      ],
+      "createdAt": "2026-02-04T11:28:23.795Z",
+      "updatedAt": "2026-02-04T11:28:23.795Z"
+    },
+    {
+      "id": "a8a10823-2862-4582-810a-d16757b18860",
+      "title": "AGENT Bolt AI",
+      "content": "Objetivo:\nAtuar como um engenheiro de software sênior, exercendo o papel de Tech Lead e Líder de Equipe, responsável por projetar, desenvolver, revisar e orientar soluções de software de alta qualidade.\n\nFormato de Retorno:\n- Respostas claras, estruturadas e técnicas\n- Código bem escrito, comentado quando necessário\n- Explicações objetivas, sem jargão inútil\n- Sugestões de boas práticas e trade-offs técnicos\n\nAvisos:\n- Priorizar qualidade de código, legibilidade e manutenção\n- Evitar soluções improvisadas ou “gambiarras”\n- Questionar requisitos mal definidos antes de implementar\n- Agir como líder técnico, não apenas como executor\n\nContexto:\nVocê é um engenheiro de software experiente, especialista em PHP, Drupal e JavaScript.\nPossui forte atuação como Tech Lead e Líder de Equipe, com capacidade de:\n- Tomar decisões arquiteturais\n- Revisar código de outros desenvolvedores\n- Orientar times técnicos\n- Comunicar ideias técnicas com clareza, tanto por escrito quanto verbalmente",
+      "color": "green",
+      "tags": [
+        "DESENVOLVIMENTO"
+      ],
+      "createdAt": "2026-02-04T11:29:14.745Z",
+      "updatedAt": "2026-02-04T12:00:07.189Z"
+    },
+    {
+      "id": "8fcb99f1-eba2-4727-9671-0fe3d20d4894",
+      "title": "Aboardagem de venda de sites",
+      "content": "Fala [[NAME]]! Como vai? Belê?\n\nTu tens contatos, amigos, donos de empresas que precisam de sites?\n\nMotivo do meu contato é apresentar o nosso serviço. 😊 Aqui na empresa, estamos com um sistema de geração de sites em alta velocidade!\n\nQueremos testar alguns nichos e, por isso, estamos oferecendo sites gerados sem compromisso. O objetivo é que o usuário ou dono da empresa possa visualizar e decidir se gostou.\n\nAlém disso, para cada venda realizada através da sua indicação, você ganhará uma porcentagem vitalícia para cada site aprovado pelo cliente. É uma ótima oportunidade para todos!\n\nQue tal?! 😊\n\n",
+      "color": "orange",
+      "tags": [
+        "VENDA"
+      ],
+      "createdAt": "2026-02-04T11:30:17.784Z",
+      "updatedAt": "2026-02-04T11:31:37.193Z"
+    },
+    {
+      "id": "e0a05c48-edd1-48af-aab8-87c1e28e8328",
+      "title": "AGENT REVIEW GITHUB (revisar PR do coleguinha)",
+      "content": "Gostaria de solicitar uma revisão rápida do código apresentado, focando na funcionalidade básica e verificando a presença de erros graves. Por favor, considere apenas os pontos que poderiam comprometer o funcionamento do site ou gerar bugs importantes, ignorando detalhes estéticos ou melhorias mais profundas",
+      "color": "purple",
+      "tags": [
+        "DESENVOLVIMENTO"
+      ],
+      "createdAt": "2026-02-04T11:59:53.075Z",
+      "updatedAt": "2026-02-04T11:59:53.075Z"
+    },
+    {
+      "id": "ec65d5aa-3983-4007-97f1-1aad81883bbb",
+      "title": "Venda de sites",
+      "content": "Desenvolvemos sites em até 1 dia útil, especialmente para pequenas e médias empresas e autônomos que desejam divulgar seus produtos de forma eficaz. Oferecemos landing pages de alta conversão, incluindo a logo do cliente, imagem do banner, formulário de contato e botão do WhatsApp.\n\nEntre em contato pelo telefone +351 927860541 e aproveite a oferta: sites a partir de R$ 50,00 por mês!\n\nUtilize cores laranja e lilás para transmitir energia e profissionalismo. Esse anúncio será veiculado no Instagram e WhatsApp.",
+      "color": "orange",
+      "tags": [
+        "VENDA"
+      ],
+      "createdAt": "2026-02-04T12:20:39.799Z",
+      "updatedAt": "2026-02-04T12:20:39.799Z"
+    },
+    {
+      "id": "338ce88f-93f3-4eb8-a64e-43fca1756797",
+      "title": "Atuar como engenheiro de prompt",
+      "content": "Atue como um engenheiro especializado em prompts. Revise e otimize o prompt abaixo para maximizar sua eficácia. Antes de prosseguir, faça perguntas objetivas para esclarecer objetivos, contexto e restrições.\n\nPROMPT: [[PROMPT]]",
+      "color": "orange",
+      "tags": [
+        "DESENVOLVIMENTO"
+      ],
+      "createdAt": "2026-02-04T12:21:14.730Z",
+      "updatedAt": "2026-02-04T12:21:14.730Z"
+    },
+    {
+      "id": "0a7f1158-0579-467e-aa21-3631d094ee13",
+      "title": "MCP CHROME DEVTOOLS",
+      "content": "1. Acesse o Chrome e abra a URL http://servicos.skybox.localhost:8050/organizer/index_skybox.php.\n2. Faça login utilizando as credenciais:\n   - Usuário: lavynia.juk\n   - Senha: 1234\n3. Após o login, aguarde 3 segundos.\n4. Clique no botão “Filtrar” na página.\n5. No grid que aparecer, clique no primeiro item da coluna \"processo\", que está destacado em azul, para abrir o modal.",
+      "color": "orange",
+      "tags": [
+        "DESENVOLVIMENTO",
+        "CODIGO"
+      ],
+      "createdAt": "2026-02-04T12:25:49.623Z",
+      "updatedAt": "2026-02-04T12:25:49.623Z"
+    },
+    {
+      "id": "bd4b0ce6-3b77-434e-b1a8-31ad396f4eab",
+      "title": "Gemini: Prompt para analisar projetos",
+      "content": "1 - analyze the overral architecture of this project, incluindig:\n  -Main modules and their responsabilities\n  -Data flow and dependencies\n  -Use of design patterns\n  -Potential architectural issues\n\n---\n\n1 - Analisar a arquitetura geral deste projeto, incluindo:\n- Módulos principais e suas responsabilidades\n- Fluxo de dados e dependências\n- Uso de padrões de design\n- Possíveis problemas arquitetônicos",
+      "color": "pink",
+      "tags": [
+        "CODIGO",
+        "DESENVOLVIMENTO"
+      ],
+      "createdAt": "2026-02-04T12:28:40.668Z",
+      "updatedAt": "2026-02-04T12:28:40.668Z"
+    },
+    {
+      "id": "f1b17935-3898-4fa4-bb60-71048d310cb7",
+      "title": "Criar cards a partir de um commit",
+      "content": "Por favor, analise o hash do commit para obter os detalhes da implementação e crie um card de tarefa seguindo a estrutura abaixo:\n\n### Template para o Card de Tarefa:\n\n## Breve descrição:** (Texto corrido, um parágrafo simples que transmita a ideia de forma clara)  \n---  \n## Critérios de aceitação:\n---  \n## Descrição técnica:  \n---  \n## Como testar?\n---  \n\nObservações: \n- Ao final de cada tópico, adicione uma quebra de linha seguida de “---\". \n- Ao final, depois de ‘---’, inclua \"PR:\".\n- Todos os tópicos devem ser concisos, contendo de 4 a 6 itens essenciais do último commits `[[COMMIT]]`.\n- Após a criação do card, compile as informações em um arquivo Markdown e nomeie-o como \"CARD.md\". ",
+      "color": "orange",
+      "tags": [
+        "CODIGO",
+        "DESENVOLVIMENTO"
+      ],
+      "createdAt": "2026-02-04T12:30:18.040Z",
+      "updatedAt": "2026-02-04T12:30:18.040Z"
+    },
+    {
+      "id": "57ea32fa-11b1-45f4-937d-d9127747f01e",
+      "title": "Prompt para criar o prompt-store",
+      "content": "# SISTEMA: PROMPT STORE\n\n## Contexto e Problema\n\nAtualmente, os prompts estão dispersos em anotações e arquivos de texto, dificultando reutilização, manutenção e evolução. O objetivo é centralizar, organizar e permitir a composição dinâmica desses prompts de forma visual e eficiente.\n\n------------------------------------------------------------------------\n\n## Objetivo do Sistema\n\n-   Armazenar prompts de forma estruturada\n-   Permitir reutilização, combinação e edição\n-   Compor prompts finais por concatenação e interpolação\n-   Garantir persistência de dados e escalabilidade futura\n\nInicialmente os dados serão armazenados em `data/data.json`. A arquitetura deve permitir migração futura para banco NoSQL sem grande refatoração.\n\n------------------------------------------------------------------------\n\n## Funcionamento Geral da Interface\n\n### Painel esquerdo (Biblioteca de Prompts)\n\n-   Lista de prompts em blocos visuais\n-   Blocos coloridos\n-   Empilhamento vertical\n-   Ação de arrastar (drag-and-drop)\n\n\n### Painel direito (Área de Composição)\n\n-   Recebe os blocos arrastados\n-   Representa a construção do prompt final\n-   Exibe preview em tempo real\n\n------------------------------------------------------------------------\n\n## Concatenação\n\n-   Ordem do preview segue a ordem dos blocos\n-   Permitir reordenar\n-   Permitir remover\n-   Atualização em tempo real\n\n------------------------------------------------------------------------\n\n## Interpolação de Tokens\n\n-   Tokens no formato `[[TOKEN]]`\n-   Edição do texto do bloco\n-   Campo JSON para valores\n\nExemplo:\n\n\n``` json\n\n{\n\n  \"[[USUARIO]]\": \"JOHN SHOW\",\n\n  \"[[EMPRESA]]\": \"COMPANY LTDA\"\n\n}\n\n```\n\nRegras: - Interpolação ocorre apenas no preview - Texto original\n\npermanece intacto - Tokens não substituídos continuam visíveis\n\n------------------------------------------------------------------------\n\n## Características de Design\n\n-   Interface limpa e minimalista\n-   Foco em usabilidade\n-   Feedback visual nas ações\n-   Cores suaves e bom contraste\n-   Layout responsivo (será utilizado muito em mobile)\n-   Animações sutis\n-   Tipografia legível\n\n------------------------------------------------------------------------\n\n## Tecnologias\n\n-   Tailwind CSS\n-   Vue 3\n-   Pinia\n\n------------------------------------------------------------------------\n\n## Persistência e Deploy\n\n-   Persistência obrigatória dos dados\n-   Armazenamento inicial em JSON\n-   Preparado para futura migração para NoSQL\n-   Deploy em VPS via Heroku\n-   Estrutura pronta para produção\n\n------------------------------------------------------------------------\n\n## Requisitos Técnicos Esperados\n\n-   Drag-and-drop nativo ou biblioteca leve\n-   Estado centralizado com Pinia\n-   Componentização (PromptBlock, ComposerArea, Preview, Editor)\n-   Camada de armazenamento desacoplada\n-   Código modular e escalável",
+      "color": "orange",
+      "tags": [
+        "DESENVOLVIMENTO",
+        "CODIGO"
+      ],
+      "createdAt": "2026-02-04T12:34:04.810Z",
+      "updatedAt": "2026-02-04T12:34:44.351Z"
+    },
+    {
+      "id": "6b378e83-14e5-42ad-8f5e-c43625c3a7e9",
+      "title": "Prompt para gerar landing page de IPTV",
+      "content": "\n\n## Criar uma Landing Page para Venda de IPTV\n\nVocê é um assistente especialista em criação de landing pages impactantes, com foco em UX/UI, copywriting e marketing digital.\n\n### Objetivo\n\nCrie uma landing page profissional e altamente persuasiva para a venda de serviços de IPTV, destacando acesso a canais de TV, filmes, séries e esportes ao vivo, com suporte de qualidade e entrega imediata. A página deve ser visualmente impactante, transmitir confiança e gerar desejo imediato de contratação.\n\n### Estilo\n\nPara o estilo visual, utilize cores escuras com toques vibrantes, criando um ambiente moderno e tecnológico. A estética deve ser limpa, responsiva, com animações sutis e de alto impacto, transmitindo praticidade, entretenimento e exclusividade.\n\n### Tom\n\nPersuasivo, direto e envolvente, transmitindo a emoção de ter acesso ilimitado ao melhor conteúdo de TV, filmes e esportes, com praticidade e economia.\n\n### Público-alvo\n\nPessoas que buscam entretenimento de qualidade, acesso a canais exclusivos, filmes, séries, esportes ao vivo, economia em relação à TV tradicional, praticidade e suporte rápido, além de flexibilidade para assistir em qualquer dispositivo.\n\n### Estrutura sugerida\n\n\n1. Menu de navegação fixo no topo com rolagem suave, contendo links para: Sobre o Serviço, Benefícios, FAQ e Assine Agora.\n2. Seção principal (hero): destaque do serviço de IPTV com uma imagem de TV moderna ou dispositivos, slogan chamativo como \"Tenha todos os canais, filmes e esportes ao vivo na sua casa\" e botão de CTA “Assine Agora”.\n3. Seção de detalhes: benefícios do IPTV (acesso imediato, variedade de canais, filmes e séries, esportes ao vivo, suporte rápido), diferenciais do serviço, exemplos de canais e conteúdos disponíveis, lista de dispositivos compatíveis (Smart TV, celular, computador, TV Box, etc.).\n4. Seção de exclusividade/urgência: destaque de promoções limitadas, como “Assine hoje e ganhe teste grátis!” ou “Vagas limitadas para o plano promocional”, com chamada de ação para gerar urgência.\n5. FAQ com respostas curtas para dúvidas comuns (como funciona o IPTV, formas de pagamento, cancelamento, dispositivos suportados, estabilidade do serviço). Use respostas genéricas para serem alteradas depois.\n6. Seção de contratação: botão de destaque com preço (ex: R$ 29,90/mês), opções de pagamento (cartão de crédito, débito, Pix) e garantia de satisfação.\n7. Rodapé com links para redes sociais do serviço de IPTV, como Instagram, Facebook e Telegram.\n8. Widget flutuante do WhatsApp no canto inferior direito, sempre visível, redirecionando para o WhatsApp Web com número configurável conforme o nicho/cliente.\n9. Página extra na rota \"/obrigado\" informando que a assinatura foi recebida e que o cliente receberá um e-mail de confirmação.\n10. Página extra na rota \"/esgotado\" para redirecionar quando uma promoção específica já tiver esgotado.\n\n\nRequisitos de design:\n\n1. Design responsivo para todos os dispositivos.\n2. Animações sutis para gerar engajamento (hover em botões, fade-in das imagens).\n3. Tipografia profissional, legível e moderna.\n4. Botões CTA bem destacados e sempre visíveis em momentos estratégicos.\n5. Layout otimizado para alta taxa de conversão, com foco em destacar benefícios, variedade de conteúdo e urgência.\n\n\n## Configuração Técnica (Vue 3 + Vite)\n\n\n### Estrutura de Arquivos Essenciais\n\n```\nprojeto/\n├── src/\n│   ├── components/      # Componentes reutilizáveis da landing page\n│   ├── router/          # Vue Router para navegação\n│   ├── views/           # Páginas principais (Home, ThankYou, SoldOut)\n│   ├── App.vue          # Componente raiz\n│   ├── main.js          # Entry point\n│   └── style.css        # Estilos globais com Tailwind\n├── public/              # Assets estáticos (ex: logos, banners de canais, etc.)\n├── server.js            # Servidor Express para produção\n├── Procfile             # Configuração Heroku\n├── vite.config.js       # Configuração Vite\n├── tailwind.config.js   # Configuração Tailwind\n└── package.json         # Dependências e scripts\n```\n\n\n### Dependências Necessárias\n\n**Produção:**\n- `vue`: ^3.4.15\n- `vue-router`: ^4.2.5\n- `express`: ^4.18.2 (para servir em produção)\n\n**Desenvolvimento:**\n- `@vitejs/plugin-vue`: ^5.0.3\n- `vite`: ^5.0.11\n- `tailwindcss`: ^3.4.1\n- `autoprefixer`: ^10.4.17\n- `postcss`: ^8.4.33\n\n\n### Scripts npm Essenciais\n\n```json\n\"scripts\": {\n  \"dev\": \"vite\",\n  \"build\": \"vite build\",\n  \"preview\": \"vite preview\",\n  \"start\": \"node server.js\"\n}\n```\n\n\n### Configuração para Deploy no Heroku\n\n**1. Procfile** (na raiz do projeto):\n```\nweb: node server.js\n```\n\n**2. server.js** (servidor Express para produção):\n```javascript\nimport express from 'express';\nimport { fileURLToPath } from 'url';\nimport { dirname, join } from 'path';\n\nconst __filename = fileURLToPath(import.meta.url);\nconst __dirname = dirname(__filename);\n\nconst app = express();\nconst PORT = process.env.PORT || 3000;\n\n// Servir arquivos estáticos da pasta dist\napp.use(express.static(join(__dirname, 'dist')));\n\n// Redirecionar todas as rotas para o index.html (SPA)\napp.get('*', (req, res) => {\n  res.sendFile(join(__dirname, 'dist', 'index.html'));\n});\n\napp.listen(PORT, () => {\n  console.log(`🚀 Servidor rodando na porta ${PORT}`);\n});\n```\n\n**3. vite.config.js** (configuração de build):\n```javascript\nimport { defineConfig } from 'vite'\nimport vue from '@vitejs/plugin-vue'\n\nexport default defineConfig({\n  plugins: [vue()],\n  server: {\n    port: 3000\n  },\n  build: {\n    outDir: 'dist',\n    assetsDir: 'assets',\n    emptyOutDir: true\n  }\n})\n```\n\n**4. package.json** (deve incluir `\"type\": \"module\"`):\n```json\n{\n  \"type\": \"module\",\n  \"scripts\": {\n    \"start\": \"node server.js\"\n  }\n}\n```\n\n\n### Configuração no Dashboard Heroku\n\n1. **Buildpack**: Use `heroku/nodejs` (detectado automaticamente)\n2. **Branch**: `main` ou sua branch de deploy\n3. **Caminho de Build**: `/` (deixar vazio se o projeto está na raiz)\n4. **Auto Deploy**: Ative para deploy automático ao fazer push\n\n\n### Processo de Deploy\n\nO Heroku executará automaticamente:\n1. `npm install` - Instala dependências\n2. `npm run build` - Cria a pasta `dist` com arquivos otimizados\n3. `npm start` - Inicia o servidor Express na porta definida pelo Heroku\n\n\n### Comandos Úteis\n\n```bash\n# Desenvolvimento local\nnpm run dev\n\n# Build para produção\nnpm run build\n\n# Testar build localmente\nnpm start\n\n# Deploy via Git\ngit push heroku main\n\n# Ver logs do Heroku\nheroku logs --tail\n```\n\n\n### Checklist de Deploy\n\n- [ ] Criar `Procfile` com `web: node server.js`\n- [ ] Criar `server.js` com Express\n- [ ] Adicionar `express` nas dependências do package.json\n- [ ] Adicionar script `\"start\": \"node server.js\"` no package.json\n- [ ] Configurar `\"type\": \"module\"` no package.json\n- [ ] Configurar `build` no vite.config.js\n- [ ] Fazer commit de todas as alterações\n- [ ] Conectar repositório ao Heroku\n- [ ] Fazer push/deploy\n\n\n### Observações Importantes\n\n- O servidor Express é necessário porque o Heroku precisa de um processo web ativo\n- A pasta `dist` é gerada automaticamente durante o build e não deve ser commitada\n- O `.gitignore` deve incluir `dist`, `node_modules` e arquivos de log\n- Certifique-se de que `\"type\": \"module\"` está no package.json para usar ES modules\n- O Express redireciona todas as rotas para o index.html, permitindo que o Vue Router funcione corretamente\n\n\n## Suporte e créditos\n\n- Conceito e demonstração: [Nome do serviço de IPTV]\n- Ferramenta utilizada: [Plataforma de hospedagem]\n- Vídeo da criação: [Link para vídeo, se disponível]\n- Produção: [URL do serviço de IPTV]\n",
+      "color": "orange",
+      "tags": [
+        "CODIGO",
+        "DESENVOLVIMENTO"
+      ],
+      "createdAt": "2026-02-04T12:36:20.812Z",
+      "updatedAt": "2026-02-04T12:36:20.812Z"
+    },
+    {
+      "id": "c516263d-bbcf-408c-830d-807f67255113",
+      "title": "\"Importante\" evite os seguintes pontos...",
+      "content": "## Importante: \n\nDurante a implementação, evite os seguintes pontos:\n\n- Overengineering: Não complique desnecessariamente a solução.\n- Reinventar a roda: Utilize soluções e bibliotecas já existentes sempre que possível.\n- Falta de conhecimento: Se algo não for claro, busque ajuda ou informações antes de seguir em frente.\n- Repetição de código: Evite duplicar trechos de código; busque a reutilização sempre que possível.\n- Concentração de tudo em um único lugar: Mantenha uma boa organização do código, distribuindo funcionalidades de forma lógica.",
+      "color": "orange",
+      "tags": [
+        "CODIGO",
+        "DESENVOLVIMENTO"
+      ],
+      "createdAt": "2026-02-05T07:42:56.825Z",
+      "updatedAt": "2026-02-05T07:42:56.825Z"
+    },
+    {
+      "id": "0c0f51a7-e6c4-4dac-a382-d469bec5c5db",
+      "title": "IMAGE: Crie um retrato artístico",
+      "content": "Crie um retrato artístico (foto anexa, sem alterações no rosto) deve estar elegantemente sentado no chão, vestindo um moletom preto moderno, calça jeans cinza folgada e tênis robustos cinza e branco e uma expressão facial pensativa enquanto olha para cima, usando óculos escuro. O fundo deve ser uma composição artística monocromática (preto e branco) com um close suave do perfil lateral do mesmo rosto.",
+      "color": "yellow",
+      "tags": [
+        "PERSONALIZACAO",
+        "VISUAL"
+      ],
+      "createdAt": "2026-02-05T08:22:18.268Z",
+      "updatedAt": "2026-02-05T08:22:58.305Z"
+    },
+    {
+      "id": "7c825b09-29db-4bb7-82e3-4e0c9ae9e661",
+      "title": "Tratar procrastinação",
+      "content": "Me faça uma pergunta desconfortável que releve o verdadeiro motivo da minha procrastinação, e me confuza até a raiz emocional disso em no máximo 5 passos.",
+      "color": "yellow",
+      "tags": [
+        "PERSONALIZACAO"
+      ],
+      "createdAt": "2026-02-05T08:23:59.968Z",
+      "updatedAt": "2026-02-05T08:23:59.968Z"
+    },
+    {
+      "id": "c2561989-dabf-443a-a5a5-6710f8ba1b50",
+      "title": "Consultor financeiro",
+      "content": "Atue como meu consultor financeiro pessoal. Me ajude a organizar minhas finanças. Quero entender quanto ganho, quanto gasto, onde estou perdendo dinheiro e como posso economizar e ganhar mais. Me faça quantas perguntas forem necessárias e monte um plano fácil para eu seguir.\n",
+      "color": "yellow",
+      "tags": [
+        "FINANÇAS"
+      ],
+      "createdAt": "2026-02-05T08:24:38.637Z",
+      "updatedAt": "2026-02-05T08:25:13.444Z"
+    },
+    {
+      "id": "52fa4794-f0c3-4f11-b059-9c25408a293a",
+      "title": "Reescrever texto",
+      "content": "Reescreva isso de forma que realce meu humor, sacarmos ou ousadia, fazendo com que se destaque e pareça claramente com meu estilo pessoal.",
+      "color": "green",
+      "tags": [
+        "PERSONALIZACAO"
+      ],
+      "createdAt": "2026-02-05T08:25:45.550Z",
+      "updatedAt": "2026-02-05T08:25:45.550Z"
+    },
+    {
+      "id": "927d6e5c-582c-49cb-b6eb-ecb06d5ba2bf",
+      "title": "IMAGEM: Melhorar rosto",
+      "content": "Sempre mantenha meu rosto, nas fotos em ultra-realista em 8K, mantendo exatamente todas as características faciais originais da imagem enviada - não alterar nem reinterpretar nenhuma parte do rosto, olhos, boca, nariz, tom de pele, barba, cabelo, linha do maxilar ou proporções. Manter 100% da fidelidade facial.",
+      "color": "pink",
+      "tags": [
+        "VISUAL"
+      ],
+      "createdAt": "2026-02-05T09:15:18.629Z",
+      "updatedAt": "2026-02-05T09:15:18.629Z"
+    },
+    {
+      "id": "b01fba2c-619e-40e2-9ef5-44cb7ff3b9ba",
+      "title": "Aprender do zero algum assunto",
+      "content": "Sou complementamente iniciante [[ASSUNTO]], mas quero atingir o nível expert o mais rápido possível. Crie um roteiro passo a passo com 30 tópicos do básico ao avançado, incluindo os tópicos chaves.",
+      "color": "orange",
+      "tags": [
+        "PESSOAL",
+        "RESUMO"
+      ],
+      "createdAt": "2026-02-05T09:16:17.792Z",
+      "updatedAt": "2026-02-05T09:16:17.792Z"
+    },
+    {
+      "id": "bc0232d4-db0a-4d61-8914-fe8d486a75e4",
+      "title": "Termine com \"O que mais eu deveria saber?\"",
+      "content": "Termine com \"O que mais eu deveria saber?\"",
+      "color": "orange",
+      "tags": [
+        "PESSOAL",
+        "RESUMO"
+      ],
+      "createdAt": "2026-02-05T09:16:58.821Z",
+      "updatedAt": "2026-02-05T09:16:58.821Z"
+    },
+    {
+      "id": "91bb9ac1-f645-47eb-84ea-00380162f83f",
+      "title": "\"O que você faria se estivesse no meu lugar?\"",
+      "content": "Pergunte \"O que você faria se estivesse no meu lugar?\" — A IA deixa de ser uma ajudante neutra e passa a dar opiniões reais. Muito mais útil que conselhos genéricos.\n",
+      "color": "orange",
+      "tags": [
+        "PESSOAL",
+        "RESUMO",
+        "CONTEXTO"
+      ],
+      "createdAt": "2026-02-05T09:18:10.876Z",
+      "updatedAt": "2026-02-05T09:18:10.876Z"
+    },
+    {
+      "id": "39f9b425-a164-4859-8337-82b9b70ebb01",
+      "title": "\"Vamos pensar nisso de um jeito diferente\"",
+      "content": "Comece com \"Vamos pensar nisso de um jeito diferente\" — Isso faz a IA parar de dar respostas genéricas e começar a ser criativa. É como virar uma chave.",
+      "color": "blue",
+      "tags": [
+        "CONTEXTO"
+      ],
+      "createdAt": "2026-02-05T09:19:10.624Z",
+      "updatedAt": "2026-02-05T09:19:10.624Z"
+    },
+    {
+      "id": "4d60f19e-9727-443c-9c8c-9a98e7604756",
+      "title": "Melhorar escrita de um card (antigo)",
+      "content": "Revise a estrutura do documento [[ARQUIVO.md]] para incluir:\n- Linguagem clara e objetiva (no max 150 caracteres)\n- Adicione/atualize os seguites tópicos.\n  - O \"critério de aceite\" (critérios de aceite diretos)\n  - A \"definição técnica\"\n  - O \"Como testar?\"\n    - Plano de implementação técnico e detalhado, com os caminhos e as melhores práticas do(a) [[TECNOLOGIA]].\n    - Instruções de teste passo a passo.",
+      "color": "yellow",
+      "tags": [
+        "DESENVOLVIMENTO",
+        "CODIGO",
+        "RESUMO"
+      ],
+      "createdAt": "2026-02-05T09:22:37.247Z",
+      "updatedAt": "2026-02-05T09:22:47.866Z"
     }
   ],
   "tags": [
@@ -127,6 +411,30 @@
       "name": "IDIOMAS",
       "color": "pink",
       "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "4085afd3-c89f-4f35-9715-660b02e7ad22",
+      "name": "VENDA",
+      "color": "gray",
+      "createdAt": "2026-02-04T11:31:29.542Z"
+    },
+    {
+      "id": "dde1e433-eafd-45d3-9880-adc83ec2a885",
+      "name": "VISUAL",
+      "color": "green",
+      "createdAt": "2026-02-05T08:22:47.280Z"
+    },
+    {
+      "id": "b2a8d26c-9e03-43ff-b859-17a03aee0690",
+      "name": "FINANÇAS",
+      "color": "gray",
+      "createdAt": "2026-02-05T08:24:47.583Z"
+    },
+    {
+      "id": "b0b720c5-52eb-4d22-9aa8-f6596caf784b",
+      "name": "PESSOAL",
+      "color": "red",
+      "createdAt": "2026-02-05T08:24:53.436Z"
     }
   ],
   "compositions": []

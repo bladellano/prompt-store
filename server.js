@@ -208,6 +208,52 @@ app.delete('/api/compositions/:id', (req, res) => {
   }
 })
 
+// ============ IMPORT/EXPORT API ============
+
+// Import all data (replace existing)
+app.post('/api/import', (req, res) => {
+  const { prompts, tags, compositions } = req.body
+  
+  if (!prompts && !tags && !compositions) {
+    return res.status(400).json({ error: 'No valid data to import' })
+  }
+  
+  const newData = {
+    prompts: prompts || [],
+    tags: tags || [],
+    compositions: compositions || []
+  }
+  
+  if (writeData(newData)) {
+    res.json({ 
+      success: true, 
+      message: 'Data imported successfully',
+      counts: {
+        prompts: newData.prompts.length,
+        tags: newData.tags.length,
+        compositions: newData.compositions.length
+      }
+    })
+  } else {
+    res.status(500).json({ error: 'Failed to import data' })
+  }
+})
+
+// Clear all data
+app.delete('/api/clear', (req, res) => {
+  const emptyData = {
+    prompts: [],
+    tags: [],
+    compositions: []
+  }
+  
+  if (writeData(emptyData)) {
+    res.json({ success: true, message: 'All data cleared' })
+  } else {
+    res.status(500).json({ error: 'Failed to clear data' })
+  }
+})
+
 // Serve Vue app for all other routes
 app.get('*', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
