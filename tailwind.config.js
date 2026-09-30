@@ -40,6 +40,7 @@ export default {
           900: '#0c4a6e',
         },
         prompt: {
+          gray: '#f3f4f6',
           yellow: '#fef3c7',
           green: '#d1fae5',
           blue: '#dbeafe',

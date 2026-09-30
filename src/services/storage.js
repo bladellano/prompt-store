@@ -33,6 +33,21 @@ class StorageService {
     }
   }
 
+  async bulkUpdatePromptColor(color) {
+    try {
+      const response = await fetch(`${API_BASE}/prompts/bulk-color`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ color })
+      })
+      if (!response.ok) throw new Error('Erro ao atualizar cores')
+      return await response.json()
+    } catch (error) {
+      console.error('StorageService.bulkUpdatePromptColor:', error)
+      throw error
+    }
+  }
+
   async updatePrompt(id, prompt) {
     try {
       const response = await fetch(`${API_BASE}/prompts/${id}`, {

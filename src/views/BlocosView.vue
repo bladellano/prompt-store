@@ -14,6 +14,40 @@
       </button>
     </div>
 
+    <div class="card mb-6">
+      <h2 class="section-heading">Cor em massa</h2>
+      <p class="text-sm text-gray-600 mb-4 max-w-2xl">
+        Aplica a mesma cor a todos os blocos da biblioteca. Depois, edite blocos individuais para marcar os mais importantes.
+      </p>
+      <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4">
+        <div class="flex flex-wrap gap-2" role="group" aria-label="Cor para aplicar em massa">
+          <button
+            v-for="color in promptColors"
+            :key="color.value"
+            type="button"
+            @click="bulkColor = color.value"
+            class="w-9 h-9 rounded-lg transition-shadow"
+            :class="[
+              color.swatch,
+              bulkColor === color.value
+                ? 'ring-2 ring-gray-800 ring-offset-2'
+                : 'ring-1 ring-gray-900/10 hover:ring-gray-400'
+            ]"
+            :title="color.name"
+            :aria-pressed="bulkColor === color.value"
+          />
+        </div>
+        <button
+          type="button"
+          class="btn-primary sm:ml-auto"
+          :disabled="isApplyingBulkColor || totalPrompts === 0"
+          @click="applyBulkColor"
+        >
+          {{ isApplyingBulkColor ? 'Aplicando…' : `Aplicar ${promptColorName(bulkColor)} a todos (${totalPrompts})` }}
+        </button>
+      </div>
+    </div>
+
     <!-- Search and Filters -->
     <div class="card mb-6">
       <div class="flex flex-col sm:flex-row gap-4">
@@ -39,7 +73,7 @@
         v-for="prompt in sortedPrompts"
         :key="prompt.id"
         class="card hover:ring-gray-900/10 transition-shadow cursor-pointer"
-        :class="getColorBorder(prompt.color)"
+        :class="promptCardBorderClass(prompt.color)"
         @click="openEditModal(prompt)"
       >
         <div class="flex items-start justify-between mb-3">
@@ -88,13 +122,24 @@
 import { ref, computed } from 'vue'
 import { usePromptStore } from '@/stores/prompts'
 import PromptModal from '@/components/PromptModal.vue'
+import {
+  PROMPT_COLORS,
+  promptCardBorderClass,
+  promptColorName
+} from '@/constants/promptColors'
 
 const store = usePromptStore()
+
+const promptColors = PROMPT_COLORS
 
 const isModalOpen = ref(false)
 const editingPrompt = ref(null)
 const searchQuery = ref('')
 const sortBy = ref('newest')
+const bulkColor = ref('gray')
+const isApplyingBulkColor = ref(false)
+
+const totalPrompts = computed(() => store.prompts.length)
 
 const sortedPrompts = computed(() => {
   let prompts = [...store.prompts]
@@ -124,16 +169,21 @@ const sortedPrompts = computed(() => {
   return prompts
 })
 
-function getColorBorder(color) {
-  const borders = {
-    yellow: 'border-l-4 border-l-yellow-400',
-    green: 'border-l-4 border-l-green-400',
-    blue: 'border-l-4 border-l-blue-400',
-    purple: 'border-l-4 border-l-purple-400',
-    pink: 'border-l-4 border-l-pink-400',
-    orange: 'border-l-4 border-l-orange-400'
+async function applyBulkColor() {
+  if (totalPrompts.value === 0) return
+
+  const label = promptColorName(bulkColor.value)
+  const message = `Aplicar a cor ${label} a todos os ${totalPrompts.value} blocos?\n\nBlocos no compositor também serão atualizados.`
+  if (!confirm(message)) return
+
+  isApplyingBulkColor.value = true
+  try {
+    await store.setColorForAllPrompts(bulkColor.value)
+  } catch {
+    alert('Não foi possível aplicar a cor. Verifique se o servidor está em execução.')
+  } finally {
+    isApplyingBulkColor.value = false
   }
-  return borders[color] || borders.yellow
 }
 
 function openNewPromptModal() {

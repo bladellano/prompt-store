@@ -58,6 +58,7 @@
 
 <script setup>
 import { computed, ref } from 'vue'
+import { promptBlockColorClass } from '@/constants/promptColors'
 
 const props = defineProps({
   prompt: {
@@ -74,17 +75,7 @@ const emit = defineEmits(['edit', 'delete', 'dragstart', 'dragend'])
 
 const isDragging = ref(false)
 
-const colorClass = computed(() => {
-  const colors = {
-    yellow: 'bg-prompt-yellow border-yellow-300',
-    green: 'bg-prompt-green border-green-300',
-    blue: 'bg-prompt-blue border-blue-300',
-    purple: 'bg-prompt-purple border-purple-300',
-    pink: 'bg-prompt-pink border-pink-300',
-    orange: 'bg-prompt-orange border-orange-300'
-  }
-  return colors[props.prompt.color] || colors.yellow
-})
+const colorClass = computed(() => promptBlockColorClass(props.prompt.color))
 
 const truncatedContent = computed(() => {
   const maxLength = 150

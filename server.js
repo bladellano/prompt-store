@@ -104,6 +104,33 @@ app.put('/api/prompts/:id', (req, res) => {
   }
 })
 
+const PROMPT_COLORS = new Set([
+  'gray', 'yellow', 'green', 'blue', 'purple', 'pink', 'orange'
+])
+
+// Set the same color on all prompts
+app.patch('/api/prompts/bulk-color', (req, res) => {
+  const { color } = req.body
+
+  if (!color || !PROMPT_COLORS.has(color)) {
+    return res.status(400).json({ error: 'Invalid color' })
+  }
+
+  const data = readData()
+  const updatedAt = new Date().toISOString()
+  data.prompts = (data.prompts || []).map(prompt => ({
+    ...prompt,
+    color,
+    updatedAt
+  }))
+
+  if (writeData(data)) {
+    res.json(data.prompts)
+  } else {
+    res.status(500).json({ error: 'Failed to update prompts' })
+  }
+})
+
 // Delete prompt
 app.delete('/api/prompts/:id', (req, res) => {
   const data = readData()

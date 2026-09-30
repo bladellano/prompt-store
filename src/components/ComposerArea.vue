@@ -74,6 +74,7 @@
 import { computed, ref } from 'vue'
 import { usePromptStore } from '@/stores/prompts'
 import draggable from 'vuedraggable'
+import { promptComposerColorClass } from '@/constants/promptColors'
 
 const store = usePromptStore()
 
@@ -86,17 +87,8 @@ const blocks = computed({
   set: (value) => store.reorderComposer(value)
 })
 
-const colorClasses = {
-  yellow: 'bg-prompt-yellow border-l-[3px] border-yellow-400/90',
-  green: 'bg-prompt-green border-l-[3px] border-green-400/90',
-  blue: 'bg-prompt-blue border-l-[3px] border-blue-400/90',
-  purple: 'bg-prompt-purple border-l-[3px] border-purple-400/90',
-  pink: 'bg-prompt-pink border-l-[3px] border-pink-400/90',
-  orange: 'bg-prompt-orange border-l-[3px] border-orange-400/90'
-}
-
 function getColorClass(color) {
-  return colorClasses[color] || colorClasses.yellow
+  return promptComposerColorClass(color)
 }
 
 function onDragOver(event) {

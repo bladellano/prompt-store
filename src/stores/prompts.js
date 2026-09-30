@@ -126,6 +126,25 @@ export const usePromptStore = defineStore('prompts', () => {
     }
   }
 
+  async function setColorForAllPrompts(color) {
+    isLoading.value = true
+    error.value = null
+    try {
+      const updated = await storageService.bulkUpdatePromptColor(color)
+      prompts.value = updated
+      composerBlocks.value = composerBlocks.value.map(block => {
+        const match = updated.find(p => p.id === block.id)
+        return match ? { ...block, color: match.color } : block
+      })
+      return updated.length
+    } catch (e) {
+      error.value = 'Erro ao aplicar cor em massa'
+      throw e
+    } finally {
+      isLoading.value = false
+    }
+  }
+
   async function deletePrompt(id) {
     try {
       await storageService.deletePrompt(id)
@@ -276,6 +295,7 @@ export const usePromptStore = defineStore('prompts', () => {
     loadCompositions,
     addPrompt,
     updatePrompt,
+    setColorForAllPrompts,
     deletePrompt,
     addTag,
     deleteTag,

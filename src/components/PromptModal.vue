@@ -80,10 +80,10 @@
                     @click="form.color = color.value"
                     class="w-8 h-8 rounded-lg border-2 transition-all"
                     :class="[
-                      color.class,
-                      form.color === color.value 
-                        ? 'border-gray-800 scale-110' 
-                        : 'border-transparent hover:scale-105'
+                      color.swatch,
+                      form.color === color.value
+                        ? 'ring-2 ring-gray-800 ring-offset-2'
+                        : 'ring-1 ring-gray-900/10 hover:ring-gray-400'
                     ]"
                     :title="color.name"
                   ></button>
@@ -144,6 +144,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { usePromptStore } from '@/stores/prompts'
+import { PROMPT_COLORS } from '@/constants/promptColors'
 
 const props = defineProps({
   isOpen: {
@@ -169,14 +170,7 @@ const form = ref({
 
 const newTag = ref('')
 
-const colors = [
-  { value: 'yellow', name: 'Amarelo', class: 'bg-prompt-yellow' },
-  { value: 'green', name: 'Verde', class: 'bg-prompt-green' },
-  { value: 'blue', name: 'Azul', class: 'bg-prompt-blue' },
-  { value: 'purple', name: 'Roxo', class: 'bg-prompt-purple' },
-  { value: 'pink', name: 'Rosa', class: 'bg-prompt-pink' },
-  { value: 'orange', name: 'Laranja', class: 'bg-prompt-orange' }
-]
+const colors = PROMPT_COLORS
 
 const availableTags = computed(() => store.tags)
 const isEditing = computed(() => !!props.prompt?.id)
