@@ -30,15 +30,27 @@
       </p>
     </div>
 
-    <!-- Tags -->
-    <div v-if="prompt.tags?.length" class="mt-3 flex flex-wrap gap-1">
-      <span 
-        v-for="tag in prompt.tags" 
-        :key="tag"
-        class="text-xs px-2 py-0.5 bg-white/60 ring-1 ring-gray-900/5 rounded text-gray-600"
+    <div
+      v-if="createdAtLabel || prompt.tags?.length"
+      class="mt-3 flex items-end justify-between gap-2"
+    >
+      <div v-if="prompt.tags?.length" class="flex flex-wrap gap-1 min-w-0 flex-1">
+        <span
+          v-for="tag in prompt.tags"
+          :key="tag"
+          class="text-xs px-2 py-0.5 bg-white/60 ring-1 ring-gray-900/5 rounded text-gray-600"
+        >
+          {{ tag }}
+        </span>
+      </div>
+      <time
+        v-if="createdAtLabel"
+        :datetime="createdAtIso"
+        class="text-[11px] tabular-nums text-gray-500 shrink-0 ml-auto"
+        :title="createdAtTitle"
       >
-        {{ tag }}
-      </span>
+        {{ createdAtLabel }}
+      </time>
     </div>
 
   </div>
@@ -78,6 +90,29 @@ const truncatedContent = computed(() => {
   const maxLength = 150
   if (props.prompt.content.length <= maxLength) return props.prompt.content
   return props.prompt.content.slice(0, maxLength) + '...'
+})
+
+const createdAtIso = computed(() => props.prompt.createdAt || props.prompt.updatedAt || '')
+
+const createdAtLabel = computed(() => {
+  if (!createdAtIso.value) return null
+  const date = new Date(createdAtIso.value)
+  if (Number.isNaN(date.getTime())) return null
+  return new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).format(date)
+})
+
+const createdAtTitle = computed(() => {
+  if (!createdAtIso.value) return ''
+  const date = new Date(createdAtIso.value)
+  if (Number.isNaN(date.getTime())) return ''
+  return new Intl.DateTimeFormat('pt-BR', {
+    dateStyle: 'long',
+    timeStyle: 'short'
+  }).format(date)
 })
 
 function onDragStart(event) {

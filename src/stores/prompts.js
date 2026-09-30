@@ -34,7 +34,7 @@ export const usePromptStore = defineStore('prompts', () => {
       )
     }
 
-    return result
+    return [...result].sort((a, b) => promptCreatedAt(b) - promptCreatedAt(a))
   })
 
   const composedText = computed(() => {
@@ -239,6 +239,12 @@ export const usePromptStore = defineStore('prompts', () => {
   function clearFilters() {
     searchQuery.value = ''
     selectedTags.value = []
+  }
+
+  function promptCreatedAt(prompt) {
+    const value = prompt.createdAt || prompt.updatedAt
+    const time = value ? new Date(value).getTime() : 0
+    return Number.isNaN(time) ? 0 : time
   }
 
   // Helper
