@@ -23,16 +23,51 @@ Um sistema para armazenar, organizar e compor prompts de forma visual e eficient
 ## 🛠️ Instalação
 
 ```bash
-# Instalar dependências
 npm install
+```
 
-# Desenvolvimento (frontend + backend)
-npm run dev        # Inicia o Vite (porta 3000)
-node server.js     # Inicia o servidor Express (porta 3001)
+## ⚠️ Desenvolvimento: dois processos obrigatórios
 
-# Produção
-npm run build      # Build do frontend
-npm start          # Inicia o servidor de produção
+Em desenvolvimento, o projeto **não** funciona com um único comando. São **dois servidores** em portas diferentes:
+
+| Processo | Comando | Porta | Função |
+|----------|---------|-------|--------|
+| Frontend | `npm run dev` | **3000** | Interface Vue (Vite) |
+| Backend | `node server.js` | **3001** | API REST + leitura/gravação em `data/data.json` |
+
+O Vite encaminha pedidos `/api/*` para `http://localhost:3001` (ver `vite.config.js`). O browser fala só com a porta **3000**; a API vive na **3001**.
+
+**Passo a passo:**
+
+```bash
+# Terminal 1 — frontend
+npm run dev
+
+# Terminal 2 — backend (obrigatório para carregar prompts, tags e composições)
+node server.js
+```
+
+Abra [http://localhost:3000](http://localhost:3000) depois de **ambos** estarem a correr.
+
+### Problemas comuns
+
+**Erro no terminal do Vite:** `[vite] http proxy error: /api/prompts` (ou `/api/tags`, `/api/compositions`) com `ECONNREFUSED`
+
+- **Causa:** o Express na porta 3001 **não está a correr** — só iniciou `npm run dev`.
+- **Solução:** noutro terminal, execute `node server.js` e recarregue a página.
+
+**A app abre mas mostra “Nenhum prompt cadastrado ainda”**
+
+- **Causa:** a API falhou; o cliente trata o erro e devolve listas vazias (não é necessariamente que `data/data.json` esteja vazio).
+- **Solução:** confirme que `node server.js` está activo e que não há erros de proxy no terminal do Vite.
+
+### Produção (um único processo)
+
+Em produção não há proxy: o Express serve o build estático e a API na **mesma** porta.
+
+```bash
+npm run build
+npm start          # PORT padrão 3001, ou variável PORT (ex.: Heroku)
 ```
 
 ## 📁 Estrutura do Projeto
