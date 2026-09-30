@@ -1,6 +1,6 @@
 <template>
   <div class="token-editor card">
-    <h3 class="text-lg font-semibold text-gray-800 mb-4">Partes para Interpolar</h3>
+    <h3 class="section-heading">Tokens</h3>
     
     <div class="space-y-4">
       <!-- Quick Token Inputs -->
@@ -10,7 +10,7 @@
           :key="token"
           class="flex items-center gap-3"
         >
-          <span class="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-[120px]">
+          <span class="text-xs font-mono bg-stone-100 px-2 py-1.5 rounded-md ring-1 ring-gray-200 min-w-[120px]">
             {{ token }}
           </span>
           <input

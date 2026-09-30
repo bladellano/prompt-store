@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen">
     <NavBar />
-    <main class="container mx-auto px-4 py-6">
+    <main class="container py-8">
       <router-view />
     </main>
   </div>

@@ -25,7 +25,7 @@
 
     <!-- Content -->
     <div class="pr-16">
-      <p class="text-sm text-gray-700 line-clamp-3">
+      <p class="text-sm text-gray-800 leading-relaxed line-clamp-3">
         {{ truncatedContent }}
       </p>
     </div>
@@ -35,18 +35,12 @@
       <span 
         v-for="tag in prompt.tags" 
         :key="tag"
-        class="text-xs px-2 py-0.5 bg-white/50 rounded text-gray-600"
+        class="text-xs px-2 py-0.5 bg-white/60 ring-1 ring-gray-900/5 rounded text-gray-600"
       >
         {{ tag }}
       </span>
     </div>
 
-    <!-- Drag Indicator -->
-    <div class="absolute bottom-2 right-2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M7 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM7 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM7 14a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM13 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM13 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM13 14a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
-      </svg>
-    </div>
   </div>
 </template>
 
@@ -99,11 +93,3 @@ function onDragEnd() {
 }
 </script>
 
-<style scoped>
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-</style>

@@ -1,19 +1,19 @@
 <template>
   <div class="preview-panel card">
-    <h3 class="text-lg font-semibold text-gray-800 mb-4">Preview</h3>
-    
-    <div 
+    <h3 class="section-heading">Texto final</h3>
+
+    <div
       v-if="previewText"
-      class="bg-gray-50 rounded-lg p-4 text-sm text-gray-700 whitespace-pre-wrap max-h-[400px] overflow-y-auto scrollbar-thin"
+      class="rounded-lg p-4 text-sm text-gray-800 leading-relaxed whitespace-pre-wrap max-h-[400px] overflow-y-auto scrollbar-thin bg-stone-50 ring-1 ring-gray-900/5 font-mono"
     >
       <span v-html="highlightedPreview"></span>
     </div>
     
     <div 
       v-else 
-      class="bg-gray-50 rounded-lg p-4 text-sm text-gray-400 italic text-center"
+      class="empty-state rounded-lg bg-stone-50 ring-1 ring-gray-900/5 py-8"
     >
-      O preview aparecerá aqui quando você adicionar blocos à área de composição.
+      Adicione blocos na área de composição para ver o texto montado aqui.
     </div>
 
     <!-- Detected Tokens Info -->

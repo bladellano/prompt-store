@@ -23,20 +23,19 @@
         >
           <div 
             v-if="isOpen"
-            class="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-hidden"
+            class="bg-white rounded-xl shadow-xl ring-1 ring-gray-900/10 w-full max-w-lg max-h-[90vh] overflow-hidden"
           >
             <!-- Header -->
             <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h2 class="text-lg font-semibold text-gray-800">
                 {{ isEditing ? 'Editar Prompt' : 'Novo Prompt' }}
               </h2>
-              <button 
+              <button
+                type="button"
                 @click="close"
-                class="text-gray-400 hover:text-gray-600 transition-colors"
+                class="text-sm text-gray-500 hover:text-gray-800"
               >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
+                Fechar
               </button>
             </div>
 

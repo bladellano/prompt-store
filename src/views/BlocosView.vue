@@ -1,33 +1,28 @@
 <template>
   <div class="blocos-view">
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
       <div>
-        <h1 class="text-2xl font-bold text-gray-800">Gerenciar Blocos</h1>
-        <p class="text-gray-500">Visualize e gerencie todos os seus prompts</p>
+        <h1 class="page-heading">Blocos</h1>
+        <p class="page-lead">Edite, busque e exclua prompts guardados na biblioteca.</p>
       </div>
-      <button 
+      <button
+        type="button"
         @click="openNewPromptModal"
-        class="btn-primary flex items-center gap-2"
+        class="btn-primary shrink-0"
       >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-        </svg>
-        Novo Bloco
+        Novo bloco
       </button>
     </div>
 
     <!-- Search and Filters -->
     <div class="card mb-6">
       <div class="flex flex-col sm:flex-row gap-4">
-        <div class="flex-1 relative">
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
+        <div class="flex-1">
           <input
             v-model="searchQuery"
-            type="text"
-            class="input pl-10"
-            placeholder="Buscar prompts..."
+            type="search"
+            class="input"
+            placeholder="Buscar por título ou conteúdo…"
           />
         </div>
         <select v-model="sortBy" class="input w-auto">
@@ -39,11 +34,11 @@
     </div>
 
     <!-- Prompts Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
       <div
         v-for="prompt in sortedPrompts"
         :key="prompt.id"
-        class="card hover:shadow-md transition-shadow cursor-pointer"
+        class="card hover:ring-gray-900/10 transition-shadow cursor-pointer"
         :class="getColorBorder(prompt.color)"
         @click="openEditModal(prompt)"
       >
@@ -51,16 +46,15 @@
           <h3 class="font-medium text-gray-800 truncate">
             {{ prompt.title || 'Sem título' }}
           </h3>
-          <button 
+          <button
+            type="button"
             @click.stop="handleDelete(prompt.id)"
-            class="text-gray-400 hover:text-red-500 transition-colors"
+            class="text-xs text-gray-500 hover:text-red-600 shrink-0"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-            </svg>
+            Excluir
           </button>
         </div>
-        <p class="text-sm text-gray-600 line-clamp-3 mb-3">
+        <p class="text-sm text-gray-600 leading-relaxed line-clamp-3 mb-3">
           {{ prompt.content }}
         </p>
         <div v-if="prompt.tags?.length" class="flex flex-wrap gap-1">
@@ -75,15 +69,9 @@
       </div>
     </div>
 
-    <div 
-      v-if="sortedPrompts.length === 0" 
-      class="text-center py-12 text-gray-400"
-    >
-      <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-      </svg>
-      <p class="text-lg">Nenhum bloco encontrado</p>
-      <p class="text-sm mt-1">Clique em "Novo Bloco" para criar seu primeiro prompt.</p>
+    <div v-if="sortedPrompts.length === 0" class="empty-state card">
+      <p class="text-gray-600">Nenhum bloco encontrado.</p>
+      <p class="mt-2">Crie um com <span class="font-medium text-gray-800">Novo bloco</span> ou ajuste a busca.</p>
     </div>
 
     <!-- Prompt Modal -->
@@ -174,11 +162,3 @@ async function handleDelete(id) {
 }
 </script>
 
-<style scoped>
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-</style>

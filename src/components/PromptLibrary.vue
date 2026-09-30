@@ -1,46 +1,40 @@
 <template>
   <div class="prompt-library">
-    <!-- Header with Search and Filters -->
     <div class="mb-4 space-y-3">
-      <!-- Search -->
-      <div class="relative">
-        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
-        <input
-          v-model="searchQuery"
-          type="text"
-          class="input pl-10"
-          placeholder="Filtrar por descrição..."
-        />
-      </div>
+      <input
+        v-model="searchQuery"
+        type="search"
+        class="input"
+        placeholder="Filtrar por título ou conteúdo…"
+        autocomplete="off"
+      />
 
-      <!-- Tag Filters -->
-      <div class="flex flex-wrap gap-2">
-        <span class="text-sm text-gray-500 self-center">Tags:</span>
+      <div v-if="availableTags.length" class="flex flex-wrap gap-2 items-center">
+        <span class="text-xs text-gray-500">Filtrar:</span>
         <button
           v-for="tag in availableTags"
           :key="tag.id"
+          type="button"
           @click="toggleTagFilter(tag.name)"
-          class="px-3 py-1 text-xs rounded-full transition-all"
+          class="px-2.5 py-1 text-xs rounded-md transition-colors ring-1"
           :class="selectedTags.includes(tag.name)
-            ? 'bg-primary-500 text-white'
-            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
+            ? 'bg-primary-600 text-white ring-primary-600'
+            : 'bg-white text-gray-600 ring-gray-200 hover:bg-gray-50'"
         >
           {{ tag.name }}
         </button>
         <button
           v-if="selectedTags.length > 0"
+          type="button"
           @click="clearFilters"
-          class="px-3 py-1 text-xs text-red-500 hover:text-red-700"
+          class="text-xs text-gray-500 hover:text-gray-800 underline-offset-2 hover:underline"
         >
-          Limpar
+          Limpar filtros
         </button>
       </div>
     </div>
 
-    <!-- Prompts List -->
-    <div class="space-y-3 max-h-[calc(100vh-300px)] overflow-y-auto scrollbar-thin pr-2">
+    <div class="space-y-3 max-h-[min(720px,calc(100vh-280px))] overflow-y-auto scrollbar-thin pr-1">
       <PromptBlock
         v-for="prompt in filteredPrompts"
         :key="prompt.id"
@@ -49,19 +43,14 @@
         @delete="$emit('delete', prompt.id)"
       />
 
-      <div 
-        v-if="filteredPrompts.length === 0" 
-        class="text-center py-8 text-gray-400"
-      >
-        <svg class="w-12 h-12 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-        </svg>
+      <div v-if="filteredPrompts.length === 0" class="empty-state">
         <p v-if="searchQuery || selectedTags.length > 0">
-          Nenhum prompt encontrado com os filtros aplicados.
+          Nenhum bloco corresponde aos filtros. Ajuste a busca ou remova tags.
         </p>
-        <p v-else>
-          Nenhum prompt cadastrado ainda.
-        </p>
+        <template v-else>
+          <p class="text-gray-600">A biblioteca está vazia.</p>
+          <p class="mt-2 text-gray-500">Use <span class="font-medium text-gray-700">Novo bloco</span> para criar o primeiro prompt reutilizável.</p>
+        </template>
       </div>
     </div>
   </div>
@@ -72,7 +61,7 @@ import { computed } from 'vue'
 import { usePromptStore } from '@/stores/prompts'
 import PromptBlock from './PromptBlock.vue'
 
-const emit = defineEmits(['edit', 'delete'])
+defineEmits(['edit', 'delete'])
 
 const store = usePromptStore()
 

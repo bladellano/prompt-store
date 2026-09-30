@@ -1,16 +1,16 @@
 <template>
   <div class="configuracoes-view">
-    <div class="mb-6">
-      <h1 class="text-2xl font-bold text-gray-800">Configurações</h1>
-      <p class="text-gray-500">Gerencie as preferências do sistema</p>
+    <div class="mb-8">
+      <h1 class="page-heading">Configurações</h1>
+      <p class="page-lead">Backup, importação e visão geral dos dados guardados localmente.</p>
     </div>
 
     <!-- Data Management -->
     <div class="card mb-6">
-      <h2 class="text-lg font-semibold text-gray-800 mb-4">Gerenciamento de Dados</h2>
+      <h2 class="section-heading">Dados</h2>
       
       <div class="space-y-4">
-        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-lg ring-1 ring-gray-900/5 bg-stone-50/80">
           <div>
             <h3 class="font-medium text-gray-700">Exportar Dados</h3>
             <p class="text-sm text-gray-500">Faça backup de todos os seus prompts e configurações</p>
@@ -20,7 +20,7 @@
           </button>
         </div>
 
-        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-lg ring-1 ring-gray-900/5 bg-stone-50/80">
           <div>
             <h3 class="font-medium text-gray-700">Importar Dados</h3>
             <p class="text-sm text-gray-500">Restaure dados de um backup anterior</p>
@@ -36,7 +36,7 @@
           </label>
         </div>
 
-        <div class="flex items-center justify-between p-4 bg-red-50 rounded-lg">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-lg ring-1 ring-red-200/80 bg-red-50/70">
           <div>
             <h3 class="font-medium text-red-700">Limpar Todos os Dados</h3>
             <p class="text-sm text-red-500">Esta ação não pode ser desfeita</p>
@@ -50,27 +50,27 @@
 
     <!-- Statistics -->
     <div class="card mb-6">
-      <h2 class="text-lg font-semibold text-gray-800 mb-4">Estatísticas</h2>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="text-center p-4 bg-primary-50 rounded-lg">
-          <div class="text-3xl font-bold text-primary-600">{{ stats.prompts }}</div>
-          <div class="text-sm text-gray-600">Prompts</div>
+      <h2 class="section-heading">Resumo</h2>
+
+      <dl class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="p-4 rounded-lg ring-1 ring-gray-900/5">
+          <dt class="text-xs text-gray-500">Blocos</dt>
+          <dd class="text-2xl font-semibold tabular-nums text-gray-900 mt-1">{{ stats.prompts }}</dd>
         </div>
-        <div class="text-center p-4 bg-green-50 rounded-lg">
-          <div class="text-3xl font-bold text-green-600">{{ stats.tags }}</div>
-          <div class="text-sm text-gray-600">Tags</div>
+        <div class="p-4 rounded-lg ring-1 ring-gray-900/5">
+          <dt class="text-xs text-gray-500">Tags</dt>
+          <dd class="text-2xl font-semibold tabular-nums text-gray-900 mt-1">{{ stats.tags }}</dd>
         </div>
-        <div class="text-center p-4 bg-purple-50 rounded-lg">
-          <div class="text-3xl font-bold text-purple-600">{{ stats.compositions }}</div>
-          <div class="text-sm text-gray-600">Composições</div>
+        <div class="p-4 rounded-lg ring-1 ring-gray-900/5">
+          <dt class="text-xs text-gray-500">Composições guardadas</dt>
+          <dd class="text-2xl font-semibold tabular-nums text-gray-900 mt-1">{{ stats.compositions }}</dd>
         </div>
-      </div>
+      </dl>
     </div>
 
     <!-- About -->
     <div class="card">
-      <h2 class="text-lg font-semibold text-gray-800 mb-4">Sobre</h2>
+      <h2 class="section-heading">Sobre</h2>
       <div class="text-sm text-gray-600 space-y-2">
         <p><strong>Prompt Store</strong> v1.0.0</p>
         <p>Um sistema para armazenar, organizar e compor prompts de forma visual e eficiente.</p>

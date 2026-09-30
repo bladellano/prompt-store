@@ -1,34 +1,25 @@
 <template>
   <div class="home-view">
     <!-- Header -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
       <div>
-        <h1 class="text-2xl font-bold text-gray-800">Prompt Store</h1>
-        <p class="text-gray-500">Componha seus prompts arrastando blocos</p>
+        <h1 class="page-heading">Compositor</h1>
+        <p class="page-lead">Arraste blocos da biblioteca, preencha tokens e copie o texto final.</p>
       </div>
-      <div class="flex gap-3">
-        <button 
-          @click="openNewPromptModal"
-          class="btn-primary flex items-center gap-2"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-          </svg>
-          <span class="hidden sm:inline">Novo Bloco</span>
-        </button>
-      </div>
+      <button
+        type="button"
+        @click="openNewPromptModal"
+        class="btn-primary shrink-0"
+      >
+        Novo bloco
+      </button>
     </div>
 
     <!-- Main Content -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-6 lg:gap-8">
       <!-- Left Panel - Library -->
       <div class="card">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-          <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-          </svg>
-          Blocos
-        </h2>
+        <h2 class="section-heading">Biblioteca</h2>
         <PromptLibrary 
           @edit="openEditModal"
           @delete="handleDelete"
@@ -38,19 +29,15 @@
       <!-- Right Panel - Composer -->
       <div class="space-y-6">
         <div class="card">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
-              <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
-              </svg>
-              Receber Blocos
-            </h2>
-            <button 
+          <div class="flex items-center justify-between gap-4 mb-4 border-b border-gray-200/80 pb-2">
+            <h2 class="text-base font-semibold text-gray-900">Área de composição</h2>
+            <button
               v-if="hasComposerBlocks"
+              type="button"
               @click="clearComposer"
-              class="text-sm text-red-500 hover:text-red-700"
+              class="text-sm text-gray-600 hover:text-red-600 transition-colors"
             >
-              Limpar tudo
+              Limpar
             </button>
           </div>
           <ComposerArea @edit="openEditModal" />
@@ -64,25 +51,21 @@
 
         <!-- Actions -->
         <div class="flex flex-wrap gap-3 justify-end">
-          <button 
+          <button
+            type="button"
             @click="saveComposition"
-            class="btn-success flex items-center gap-2"
+            class="btn-success"
             :disabled="!hasComposerBlocks"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
-            </svg>
-            Guardar
+            Guardar composição
           </button>
-          <button 
+          <button
+            type="button"
             @click="exportText"
-            class="btn-primary flex items-center gap-2"
+            class="btn-primary"
             :disabled="!hasComposerBlocks"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-            </svg>
-            Exportar Texto
+            Copiar texto
           </button>
         </div>
       </div>
@@ -107,12 +90,10 @@
     >
       <div 
         v-if="toast.show"
-        class="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50"
+        class="fixed bottom-4 right-4 max-w-sm bg-gray-900 text-white text-sm px-4 py-3 rounded-lg shadow-lg ring-1 ring-white/10 z-50"
+        role="status"
       >
-        <svg v-if="toast.type === 'success'" class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-        </svg>
-        <span>{{ toast.message }}</span>
+        {{ toast.message }}
       </div>
     </transition>
   </div>

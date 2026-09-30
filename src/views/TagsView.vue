@@ -1,15 +1,13 @@
 <template>
   <div class="tags-view">
-    <div class="flex items-center justify-between mb-6">
-      <div>
-        <h1 class="text-2xl font-bold text-gray-800">Gerenciar Tags</h1>
-        <p class="text-gray-500">Organize seus prompts por categorias</p>
-      </div>
+    <div class="mb-8">
+      <h1 class="page-heading">Tags</h1>
+      <p class="page-lead">Agrupe blocos por tema para filtrar a biblioteca com mais rapidez.</p>
     </div>
 
     <!-- Add New Tag -->
     <div class="card mb-6">
-      <h2 class="text-lg font-semibold text-gray-800 mb-4">Nova Tag</h2>
+      <h2 class="section-heading">Nova tag</h2>
       <form @submit.prevent="addNewTag" class="flex gap-3">
         <input
           v-model="newTagName"
@@ -34,20 +32,17 @@
 
     <!-- Tags List -->
     <div class="card">
-      <h2 class="text-lg font-semibold text-gray-800 mb-4">Tags Existentes</h2>
-      
-      <div v-if="tags.length === 0" class="text-center py-8 text-gray-400">
-        <svg class="w-12 h-12 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
-        </svg>
-        <p>Nenhuma tag cadastrada ainda.</p>
+      <h2 class="section-heading">Tags existentes</h2>
+
+      <div v-if="tags.length === 0" class="empty-state">
+        <p>Nenhuma tag ainda. Adicione uma acima para classificar os blocos.</p>
       </div>
 
       <div v-else class="space-y-2">
         <div 
           v-for="tag in tags" 
           :key="tag.id"
-          class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+          class="flex items-center justify-between p-3 rounded-lg ring-1 ring-gray-900/5 bg-stone-50/80 hover:bg-stone-100/80 transition-colors"
         >
           <div class="flex items-center gap-3">
             <span 
@@ -59,13 +54,12 @@
               ({{ getPromptCount(tag.name) }} prompts)
             </span>
           </div>
-          <button 
+          <button
+            type="button"
             @click="deleteTag(tag.id)"
-            class="text-gray-400 hover:text-red-500 transition-colors"
+            class="text-xs text-gray-500 hover:text-red-600"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-            </svg>
+            Excluir
           </button>
         </div>
       </div>
