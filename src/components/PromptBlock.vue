@@ -23,9 +23,14 @@
       </button>
     </div>
 
-    <!-- Content -->
     <div class="pr-16">
-      <p class="text-sm text-gray-800 leading-relaxed line-clamp-3">
+      <h3
+        class="text-sm font-semibold text-gray-900 line-clamp-2 mb-1.5 leading-snug"
+        :class="{ 'text-gray-500 font-medium': !hasTitle }"
+      >
+        {{ blockTitle }}
+      </h3>
+      <p class="text-sm text-gray-700 leading-relaxed line-clamp-3">
         {{ truncatedContent }}
       </p>
     </div>
@@ -76,6 +81,12 @@ const emit = defineEmits(['edit', 'delete', 'dragstart', 'dragend'])
 const isDragging = ref(false)
 
 const colorClass = computed(() => promptBlockColorClass(props.prompt.color))
+
+const hasTitle = computed(() => Boolean(props.prompt.title?.trim()))
+
+const blockTitle = computed(() =>
+  hasTitle.value ? props.prompt.title.trim() : 'Sem título'
+)
 
 const truncatedContent = computed(() => {
   const maxLength = 150
