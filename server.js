@@ -131,6 +131,32 @@ app.patch('/api/prompts/bulk-color', (req, res) => {
   }
 })
 
+// Register usage (copy of a composition) for a set of prompts
+app.post('/api/prompts/usage', (req, res) => {
+  const ids = req.body?.ids
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ error: 'ids must be a non-empty array' })
+  }
+
+  const data = readData()
+  const usedAt = new Date().toISOString()
+  const updated = []
+
+  for (const id of new Set(ids)) {
+    const prompt = data.prompts.find(p => p.id === id)
+    if (!prompt) continue
+    prompt.usageCount = (prompt.usageCount || 0) + 1
+    prompt.lastUsedAt = usedAt
+    updated.push(prompt)
+  }
+
+  if (writeData(data)) {
+    res.json(updated)
+  } else {
+    res.status(500).json({ error: 'Failed to register usage' })
+  }
+})
+
 // Delete prompt
 app.delete('/api/prompts/:id', (req, res) => {
   const data = readData()

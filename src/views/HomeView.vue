@@ -169,6 +169,7 @@ function exportText() {
   
   // Copiar para clipboard
   navigator.clipboard.writeText(text).then(() => {
+    store.registerComposerUsage()
     showToast('Texto copiado para a área de transferência!')
   }).catch(() => {
     // Fallback: criar textarea e copiar
@@ -178,6 +179,7 @@ function exportText() {
     textarea.select()
     document.execCommand('copy')
     document.body.removeChild(textarea)
+    store.registerComposerUsage()
     showToast('Texto copiado para a área de transferência!')
   })
 }

@@ -34,7 +34,11 @@ export const usePromptStore = defineStore('prompts', () => {
       )
     }
 
-    return [...result].sort((a, b) => promptCreatedAt(b) - promptCreatedAt(a))
+    // Mais usados primeiro; empate resolvido pelos mais recentes
+    return [...result].sort((a, b) =>
+      (b.usageCount || 0) - (a.usageCount || 0) ||
+      promptCreatedAt(b) - promptCreatedAt(a)
+    )
   })
 
   const composedText = computed(() => {
@@ -142,6 +146,20 @@ export const usePromptStore = defineStore('prompts', () => {
       throw e
     } finally {
       isLoading.value = false
+    }
+  }
+
+  async function registerComposerUsage() {
+    const ids = [...new Set(composerBlocks.value.map(b => b.id))]
+    if (ids.length === 0) return
+    try {
+      const updated = await storageService.registerPromptUsage(ids)
+      for (const item of updated) {
+        const index = prompts.value.findIndex(p => p.id === item.id)
+        if (index !== -1) prompts.value[index] = item
+      }
+    } catch (e) {
+      console.error('Erro ao registrar uso dos blocos:', e)
     }
   }
 
@@ -295,6 +313,7 @@ export const usePromptStore = defineStore('prompts', () => {
     loadCompositions,
     addPrompt,
     updatePrompt,
+    registerComposerUsage,
     setColorForAllPrompts,
     deletePrompt,
     addTag,

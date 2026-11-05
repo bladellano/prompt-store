@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply antialiased font-sans text-gray-800 bg-stone-50;
+    @apply antialiased font-sans text-gray-800 bg-canvas;
   }
 
   ::selection {
@@ -31,7 +31,7 @@
 
   .btn {
     @apply px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150
-      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-50
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas
       disabled:opacity-50 disabled:pointer-events-none motion-reduce:transition-none;
   }
 

@@ -94,7 +94,7 @@ Ao adicionar rotas de prompt com `:id`, mantenha `/api/prompts/bulk-color` **ant
 - **Estado:** a única fonte de verdade do cliente é `usePromptStore`. Componentes leem do store e disparam ações dele.
 - **Composer vs. biblioteca:** `composerBlocks` guarda **cópias** dos prompts, com `composerId` único. Ao atualizar um prompt, `updatePrompt` já sincroniza o composer. Se criar outra ação que altere prompts, faça o mesmo.
 - **Tokens:** o padrão é `[[MAIUSCULAS_E_NUMEROS_E_UNDERSCORE]]`, regex `/\[\[([A-Z0-9_]+)\]\]/g`. A interpolação está em `interpolatedText` no store.
-- **Ordem:** a lista filtrada é ordenada por `createdAt` decrescente (`promptCreatedAt`). A ordem da composição é a ordem do array `composerBlocks`.
+- **Ordem:** a lista filtrada é ordenada por `usageCount` decrescente (incrementado ao copiar o texto da composição, via `POST /api/prompts/usage`), com desempate por `createdAt` decrescente (`promptCreatedAt`). A ordem da composição é a ordem do array `composerBlocks`.
 - **Ao acrescentar uma cor de bloco**, atualize todos estes pontos, senão a cor falha silenciosamente:
   1. `PROMPT_COLORS` em `src/constants/promptColors.js` (valor, nome e swatch)
   2. os helpers `promptBlockColorClass`, `promptComposerColorClass` e `promptCardBorderClass` no mesmo arquivo

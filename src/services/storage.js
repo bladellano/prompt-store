@@ -63,6 +63,21 @@ class StorageService {
     }
   }
 
+  async registerPromptUsage(ids) {
+    try {
+      const response = await fetch(`${API_BASE}/prompts/usage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids })
+      })
+      if (!response.ok) throw new Error('Erro ao registrar uso')
+      return await response.json()
+    } catch (error) {
+      console.error('StorageService.registerPromptUsage:', error)
+      throw error
+    }
+  }
+
   async deletePrompt(id) {
     try {
       const response = await fetch(`${API_BASE}/prompts/${id}`, {

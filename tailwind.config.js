@@ -27,6 +27,7 @@ export default {
         mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
+        canvas: '#F7F4EF',
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
